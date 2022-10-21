@@ -23,6 +23,7 @@ class TaskFactory extends Factory
             "description" => $this->faker->text(),
             "start_date" => $this->faker->date(),
             "end_date" => null,
+            "is_finish" => $this->faker->boolean(),
             "user_id" => User::all()->random()->id // select ramdom user_id from User model
         ];
     }

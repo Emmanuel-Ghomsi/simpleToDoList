@@ -20,6 +20,7 @@ class CreateTasksTable extends Migration
             $table->text("description")->nullable();
             $table->date("start_date");
             $table->date("end_date")->nullable();
+            $table->boolean("is_finish")->default(false);
             $table->foreignId("user_id")->constrained("users")->cascadeOnDelete();
             $table->timestamps();
         });

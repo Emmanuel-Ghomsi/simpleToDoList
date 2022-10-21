@@ -9,7 +9,7 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["title", "slug", "start_date", "end_date", "user_id"];
+    protected $fillable = ["title", "slug", "start_date", "end_date", "is-finish", "user_id"];
 
     /**
      * Relation One to Many with User model
