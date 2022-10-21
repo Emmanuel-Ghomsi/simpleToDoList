@@ -13,6 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // Generate fake data to populate database
+        $this->command->info('Create admin user');
+        \App\Models\User::factory(1)->create();
+
+        $this->command->info('Create tasks data');
+        \App\Models\Task::factory(10)->create();
     }
 }
