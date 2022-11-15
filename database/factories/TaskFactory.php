@@ -19,7 +19,7 @@ class TaskFactory extends Factory
 
         return [
             "title" => $title,
-            "slug" => Str::str_slug($title),
+            "slug" => Str::slug($title),
             "description" => $this->faker->text(),
             "start_date" => $this->faker->date(),
             "end_date" => null,

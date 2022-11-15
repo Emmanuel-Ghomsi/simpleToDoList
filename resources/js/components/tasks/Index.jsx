@@ -6,7 +6,7 @@ const Index = () => {
     const [tasks, setTasks] = useState([]);
 
     const handleNewTask = () => {
-        navigate("/add-task");
+        navigate("/task/create");
     };
 
     // Before all...
@@ -35,7 +35,7 @@ const Index = () => {
                     {tasks.length > 0 ? (
                         tasks.map((task, index) => {
                             return (
-                                <tr>
+                                <tr key={index}>
                                     <td>{task.title}</td>
                                     <td>{task.description}</td>
                                     <td>{task.start_date}</td>

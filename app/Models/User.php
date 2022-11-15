@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -50,5 +51,17 @@ class User extends Authenticatable
     public function tasks()
     {
         return $this->hasMany(Task::class);
+    }
+
+    /**
+     * Permet de convertir le format timestamp de Laravel par default a "Y-m-d H:i:s.u"
+     * Vers le format de SQL Server "Y-d-m H:i:s"
+     * 
+     * @param  $value   Valeur à convertir
+     * @return DateTime Date convertie au format correct à l'aide de Carbon
+     */
+    public function fromDateTime($value)
+    {
+        return Carbon::parse(parent::fromDateTime($value))->format('Y-d-m H:i:s');
     }
 }
